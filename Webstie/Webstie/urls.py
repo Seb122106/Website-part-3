@@ -1,30 +1,16 @@
-"""
-URL configuration for Webstie project.
-
-The `urlpatterns` list routes URLs to views. For more information please see:
-    https://docs.djangoproject.com/en/5.2/topics/http/urls/
-Examples:
-Function views
-    1. Add an import:  from my_app import views
-    2. Add a URL to urlpatterns:  path('', views.home, name='home')
-Class-based views
-    1. Add an import:  from other_app.views import Home
-    2. Add a URL to urlpatterns:  path('', Home.as_view(), name='home')
-Including another URLconf
-    1. Import the include() function: from django.urls import include, path
-    2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
-"""
 from django.contrib import admin
 from django.urls import include, path
-from Webstie.views import aboutpage, contactpage, homepage, skillsetpage
+from Webstie.views import aboutpage, homepage, skillsetpage
 from projects import views as project_views
+from inquiry import views as inquiry_views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', homepage, name='home'),
     path('about/', aboutpage, name='about'),
-    path('contact/', contactpage, name='contact'),
+    path('contact/', inquiry_views.contact_view, name='contact'),
     path('skillset/', skillsetpage, name='skillset'),
     path('projects/', project_views.project_list_view, name='project_list'),
     path('project/<int:pk>/', project_views.project_detail_view, name='project_detail'),
+    path('testimonies/', include('testimonies.urls')),
 ]

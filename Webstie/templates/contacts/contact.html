@@ -1,0 +1,38 @@
+<form method="POST">
+    {% csrf_token %}
+    <div class="row">
+        <div class="col-md-6 mb-3">
+            <small class="font-monospace d-block text-uppercase fw-bold mb-1" style="font-size: 0.75rem; color: rgba(31, 46, 108, 0.7) !important;">First Name</small>
+            <input type="text" name="first_name" class="form-control" required>
+        </div>
+        <div class="col-md-6 mb-3">
+            <small class="font-monospace d-block text-uppercase fw-bold mb-1" style="font-size: 0.75rem; color: rgba(31, 46, 108, 0.7) !important;">Last Name</small>
+            <input type="text" name="last_name" class="form-control" required>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-6 mb-3">
+            <small class="font-monospace d-block text-uppercase fw-bold mb-1" style="font-size: 0.75rem; color: rgba(31, 46, 108, 0.7) !important;">Contact Number</small>
+            <input type="text" name="contact_number" class="form-control" required>
+        </div>
+        <div class="col-md-6 mb-3">
+            <small class="font-monospace d-block text-uppercase fw-bold mb-1" style="font-size: 0.75rem; color: rgba(31, 46, 108, 0.7) !important;">Email</small>
+            <input type="email" name="email" class="form-control" required>
+        </div>
+    </div>
+
+    <div class="mb-3">
+        <small class="font-monospace d-block text-uppercase fw-bold mb-1" style="font-size: 0.75rem; color: rgba(31, 46, 108, 0.7) !important;">Address</small>
+        <textarea name="address" class="form-control" rows="2" required></textarea>
+    </div>
+
+    <div class="mb-3">
+        <small class="font-monospace d-block text-uppercase fw-bold mb-1" style="font-size: 0.75rem; color: rgba(31, 46, 108, 0.7) !important;">Message</small>
+        <textarea name="message" class="form-control" rows="3" required></textarea>
+    </div>
+
+    <div class="text-center">
+        <button type="submit" class="btn fw-bold px-4 py-2" style="background-color: #1F2E6C; color: #fad707; border: none;">Submit</button>
+    </div>
+</form>
