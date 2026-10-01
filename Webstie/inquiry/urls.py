@@ -1,7 +1,7 @@
-from django.urls import include, path
+from django.urls import path
 from . import views
 
 urlpatterns = [
-    path('contact/', views.contact_view, name='contact'),
-    path('', include('inquiry.urls')),
+    path('', views.inquiry_create, name='inquiry_create'),
+    path('success/', views.inquiry_success, name='inquiry_success'),
 ]
