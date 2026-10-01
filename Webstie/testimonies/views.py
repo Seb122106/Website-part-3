@@ -1,12 +1,17 @@
 from django.shortcuts import render, redirect, get_object_or_404
+from django.views.generic import ListView
 from .models import Testimony
 from .forms import TestimonyForm
 
-def testimony_list_view(request):
-    testimonies = Testimony.objects.all().order_by('-created_at')
-    return render(request, 'testimonies/testimony_list.html', {'testimonies': testimonies})
 
-def testimony_create_view(request):
+class TestimonyListView(ListView):
+    model = Testimony
+    template_name = 'testimonies/testimony_list.html'
+    context_object_name = 'testimonies'
+    ordering = ['-id']
+
+
+def testimony_create(request):
     if request.method == 'POST':
         form = TestimonyForm(request.POST)
         if form.is_valid():
@@ -16,6 +21,7 @@ def testimony_create_view(request):
         form = TestimonyForm()
     return render(request, 'testimonies/testimony_form.html', {'form': form})
 
-def testimony_detail_view(request, pk):
+
+def testimony_detail(request, pk):
     testimony = get_object_or_404(Testimony, pk=pk)
     return render(request, 'testimonies/testimony_detail.html', {'testimony': testimony})

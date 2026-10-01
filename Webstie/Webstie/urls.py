@@ -12,5 +12,6 @@ urlpatterns = [
     path('skillset/', skillsetpage, name='skillset'),
     path('projects/', project_views.project_list_view, name='project_list'),
     path('project/<int:pk>/', project_views.project_detail_view, name='project_detail'),
+    path('projects/add/', project_views.project_create_view, name='project_create'),
     path('testimonies/', include('testimonies.urls')),
 ]

@@ -1,19 +1,20 @@
-from django.http import HttpResponse
 from django.shortcuts import render
-from django.shortcuts import render, get_object_or_404
 from projects.models import Project, PersonalInfo
+from testimonies.models import Testimony
+
+
 def homepage(request):
-    all_projects = Project.objects.all()
-    my_info = PersonalInfo.objects.first()
     context = {
-        'projects': all_projects,
-        'personal_info': my_info
+        'projects': Project.objects.all(),
+        'personal_info': PersonalInfo.objects.first(),
+        'testimonies': Testimony.objects.order_by('-id')[:3],
     }
-    
     return render(request, 'home.html', context)
+
 
 def aboutpage(request):
     return render(request, 'about.html')
+
 
 def contactpage(request):
     return render(request, 'contact.html')
